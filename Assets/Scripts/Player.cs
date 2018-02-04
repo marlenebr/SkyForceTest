@@ -17,6 +17,7 @@ namespace SkyForce
 
         public GameObject CompleteLabel;
         public GameObject StatusBar;
+        public GameObject PlayerGun;
         float barStep;
         float statusscaleX100;
 
@@ -107,6 +108,13 @@ namespace SkyForce
                 StarCashText.text = StarCash.ToString();
                 Destroy(col.gameObject);
 
+
+            }
+
+            else if (col.gameObject.tag == "WeaponUpgrade")
+            {
+                PlayerGun.GetComponent<Gun>().ShootingInterval /= 2;
+                Destroy(col.gameObject);
 
             }
 
