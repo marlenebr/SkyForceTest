@@ -21,8 +21,10 @@ namespace SkyForce
         // Use this for initialization
         void Start()
         {
-
-            transform.localScale = new Vector3(bulletScale, bulletScale, bulletScale);
+            if (bulletScale != 1.0f)
+            {
+                transform.localScale = new Vector3(bulletScale, bulletScale, bulletScale);
+            }
             actualLivingTime = 0f;
         }
 
