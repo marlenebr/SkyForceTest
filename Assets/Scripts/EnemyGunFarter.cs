@@ -2,44 +2,49 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyGunFarter : Gun {
+namespace SkyForce
+{
 
-
-    public float RotatingSpeed = 0.01f;
-    public float WaitBetweenBulletGroup = 1.0f;
-    public int BulletsPerGroup = 6;
-
-    int groupBulletCount = 0;
-    float lastShootTimeeft = 0f;
-
-
-    public override void updateBulletShooting()
+    public class EnemyGunFarter : Gun
     {
-        lastShootTimeeft += Time.deltaTime;
-        if (lastShootTimeeft >= ShootingInterval)
+
+
+        public float RotatingSpeed = 0.01f;
+        public float WaitBetweenBulletGroup = 1.0f;
+        public int BulletsPerGroup = 6;
+
+        int groupBulletCount = 0;
+        float lastShootTimeeft = 0f;
+
+
+        public override void updateBulletShooting()
         {
-
-            if (groupBulletCount < BulletsPerGroup)
+            lastShootTimeeft += Time.deltaTime;
+            if (lastShootTimeeft >= ShootingInterval)
             {
-                shootBullet();
-                lastShootTimeeft = 0f;
-                groupBulletCount++;
+
+                if (groupBulletCount < BulletsPerGroup)
+                {
+                    shootBullet();
+                    lastShootTimeeft = 0f;
+                    groupBulletCount++;
 
 
+                }
+                else
+                {
+                    lastShootTimeeft = -WaitBetweenBulletGroup;
+                    groupBulletCount = 0;
+                }
             }
-            else
-            {
-                lastShootTimeeft = -WaitBetweenBulletGroup;
-                groupBulletCount = 0;
-            }
+
+            Transform playertrans = GameObject.FindWithTag("Player").transform;
+            Vector3 targetDir = playertrans.position - transform.position;
+            Vector3 newDir = Vector3.RotateTowards(transform.forward, targetDir, RotatingSpeed, 0.0f);
+
+            transform.rotation = Quaternion.LookRotation(newDir);
         }
 
-        Transform playertrans = GameObject.FindWithTag("Player").transform;
-        Vector3 targetDir = playertrans.position - transform.position;
-        Vector3 newDir = Vector3.RotateTowards(transform.forward, targetDir, RotatingSpeed, 0.0f);
 
-        transform.rotation = Quaternion.LookRotation(newDir);
     }
-
-  
 }

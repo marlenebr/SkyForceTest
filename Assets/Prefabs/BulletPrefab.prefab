@@ -37,8 +37,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1230493178535442}
-  m_LocalRotation: {x: 0.00807262, y: 0.20827578, z: -0.0017190905, w: 0.97803533}
-  m_LocalPosition: {x: -8.600001, y: 1.6434, z: -4.3500004}
+  m_LocalRotation: {x: 0.035303522, y: 0.8762064, z: -0.064953975, w: 0.47623214}
+  m_LocalPosition: {x: -0.6600016, y: 1.6434, z: 21.130001}
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_Children: []
   m_Father: {fileID: 0}
@@ -113,7 +113,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hurtIntensity: 1
   bulletScale: 0.3
-  livingTime: 2
+  livingTime: 4
   speed: 0.1
   isEnemyBullet: 1
 --- !u!135 &135797953787625812
